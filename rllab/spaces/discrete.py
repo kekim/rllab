@@ -30,16 +30,28 @@ class Discrete(Space):
         return self.n == other.n
 
     def flatten(self, x):
-        return special.to_onehot(x, self.n)
+        if np.isscalar(x):
+            return special.to_onehot(x, self.n)
+        else:
+            return x
 
     def unflatten(self, x):
-        return special.from_onehot(x)
+        if np.isscalar(x):
+            return x
+        else:
+            return special.from_onehot(x)
 
     def flatten_n(self, x):
-        return special.to_onehot_n(x, self.n)
+        if x.shape[1] == 1:
+            return special.to_onehot_n(x, self.n)
+        else:
+            return x
 
     def unflatten_n(self, x):
-        return special.from_onehot_n(x)
+        if x.shape[1] == 1:
+            return x
+        else:
+            return special.from_onehot_n(x)
 
     @property
     def flat_dim(self):

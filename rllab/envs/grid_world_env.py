@@ -99,13 +99,13 @@ class GridWorldEnv(Env, Serializable):
         next_state_type = self.desc[next_x, next_y]
         if next_state_type == 'H':
             done = True
-            reward = 0
+            reward = 0.
         elif next_state_type in ['F', 'S']:
             done = False
-            reward = 0
+            reward = 0.
         elif next_state_type == 'G':
             done = True
-            reward = 1
+            reward = 1.
         else:
             raise NotImplementedError
         self.state = next_state

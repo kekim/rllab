@@ -287,7 +287,9 @@ class ConvNetwork(object):
 
         if len(input_shape) == 3:
             l_in = L.InputLayer(shape=(None, np.prod(input_shape)), input_var=input_var)
-            l_hid = L.reshape(l_in, ([0],) + input_shape)
+            input_shape = ([0],) + input_shape
+            l_hid = L.reshape(l_in, input_shape)
+            l_hid = L.dimshuffle(l_hid, (0, 3, 1, 2))  ## theano ordering
         elif len(input_shape) == 2:
             l_in = L.InputLayer(shape=(None, np.prod(input_shape)), input_var=input_var)
             input_shape = (1,) + input_shape
