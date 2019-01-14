@@ -1,7 +1,5 @@
-import gym.envs
+
 from rllab.envs.gym_env import GymEnv
-from envs.proxy_gym_env import ProxyGymEnv
-from misc.retro_wrappers import wrap_deepmind_retro
 from policies.categorical_mlp_q_policy import CategoricalMlpQPolicy
 from exploration_strategies.eps_greedy_strategy import EpsilonGreedyStrategy
 
