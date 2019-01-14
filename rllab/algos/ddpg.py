@@ -212,6 +212,7 @@ class DDPG(RLAlgorithm):
         for epoch in range(self.n_epochs):
             logger.push_prefix('epoch #%d | ' % epoch)
             logger.log("Training started")
+            terminal = True
             for epoch_itr in pyprind.prog_bar(range(self.epoch_length)):
                 # Execute policy
                 if terminal:  # or path_length > self.max_path_length:
